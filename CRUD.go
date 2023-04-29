@@ -71,6 +71,9 @@ var queryType = graphql.NewObject(
 	graphql.ObjectConfig{
 		Name: "Query",
 		Fields: graphql.Fields{
+			/* Get (read) single product by id
+			   http://localhost:8080/product?query={product(id:1){name,info,price}}
+			*/
 			"product" : &graphql.Field{
 				Type: productType,
 				Description: "Get product by Id",
@@ -94,6 +97,9 @@ var queryType = graphql.NewObject(
 				},
 
 			},
+			/* Get (read) product list
+			   http://localhost:8080/product?query={list{id,name,info,price}}
+			*/
 			"list" : &graphql.Field{
 				Type: graphql.NewList(productType),
 				Description: "Get Product List",
@@ -110,6 +116,9 @@ var mutationType = graphql.NewObject(
 	graphql.ObjectConfig{
 		Name: "Mutation",
 		Fields: graphql.Fields{
+		/* Create new product item
+		http://localhost:8080/product?query=mutation+_{create(name:"Inca Kola",info:"Inca Kola is a soft drink that was created in Peru in 1935 by British immigrant Joseph Robinson Lindley using lemon verbena (wiki)",price:1.99){id,name,info,price}}
+		*/
 			// create new product item
 			"create": &graphql.Field{
 				Type : productType,
