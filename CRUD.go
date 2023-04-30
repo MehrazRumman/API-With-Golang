@@ -6,7 +6,8 @@ import (
 	"math/rand"
 	"net/http"
 	"time"
-
+	//"github.com/gin-gonic/gin"
+   
 	"github.com/graphql-go/graphql"
 )
 
@@ -117,7 +118,7 @@ var mutationType = graphql.NewObject(
 		Name: "Mutation",
 		Fields: graphql.Fields{
 		/* Create new product item
-		http://localhost:8080/product?query=mutation+_{create(name:"Inca Kola",info:"Inca Kola is a soft drink that was created in Peru in 1935 by British immigrant Joseph Robinson Lindley using lemon verbena (wiki)",price:1.99){id,name,info,price}}
+		http://localhost:8080/product?query=mutation+_{create(name:"fizz",info:"moja",price:2.99){id,name,info,price}
 		*/
 			// create new product item
 			"create": &graphql.Field{
@@ -243,6 +244,12 @@ func executeQuery(query string, schema graphql.Schema) *graphql.Result{
 }
 
 func main(){
+	// configure the gin server
+	//router := gin.Default()
+	//router.GET("/products",getAllProducts)
+	//router.Run()
+
+
 	http.HandleFunc("/product",func(w http.ResponseWriter, r *http.Request) {
 		result := executeQuery(r.URL.Query().Get("query"),schema)
 		json.NewEncoder(w).Encode(result)
