@@ -10,19 +10,21 @@
 ## What is graphql-go ?
 
 * An implementation of GraphQL in Go. Follows the official reference implementation graphql-js.
-*Supports: queries, mutations & subscriptions.
+* Supports: queries, mutations & subscriptions.
 
 ## What is CRUD ? 
-*Create, Read, Update, and Delete (CRUD) are the four basic functions that models should be able to do, at most.
+* Create, Read, Update, and Delete (CRUD) are the four basic functions that models should be able to do, at most.
 
 ## What is CRUD.go ?
 
 * CRUD is a graphql-api in golang . Where one can query by ID of products. Also create , update , and delete new products .
 
 * Get single product by id 
+
 ` http://localhost:8080/product?query={product(id:1){name,info,price}}`
 
 * Get product list 
+
 ` http://localhost:8080/product?query={list{id,name,info,price}}`
 
 * Create New product Item
@@ -31,7 +33,9 @@
 
 
 * Update Item
+
 `http://localhost:8080/product?query=mutation+_{update(id:1,price:9.95){id,name,info,price}}`
 
 * Delete Item
+
 `http://localhost:8080/product?query=mutation+_{delete(id:1){id,name,info,price}}`
